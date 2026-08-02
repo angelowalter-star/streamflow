@@ -95,3 +95,76 @@
 .income-list-section h2 {
   margin-bottom: 20px;
 }
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.settings-btn {
+  padding: 8px 15px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.settings-btn:hover {
+  background: #e0e0e0;
+}
+
+.darkmode-btn {
+  padding: 8px 12px;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+
+body.dark-mode .darkmode-btn {
+  border-color: #444;
+}
+
+.darkmode-btn:hover {
+  background: #f0f0f0;
+}
+
+body.dark-mode .darkmode-btn:hover {
+  background: #333;
+}
+
+.export-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+body.dark-mode .export-buttons button {
+  color: white;
+}
+
+.language-btn {
+  padding: 8px 12px;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s;
+}
+
+body.dark-mode .language-btn {
+  border-color: #444;
+}
+
+.language-btn:hover {
+  background: #f0f0f0;
+}
+
+body.dark-mode .language-btn:hover {
+  background: #333;
+}

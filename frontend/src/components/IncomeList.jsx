@@ -1,34 +1,29 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './IncomeList.css';
 
 function IncomeList({ incomeEntries, categories, onDelete }) {
-  const sortedEntries = [...incomeEntries].sort((a, b) => new Date(b.entry_date) - new Date(a.entry_date));
-
-  if (sortedEntries.length === 0) {
-    return <div className="empty-state"><p>No income entries yet</p></div>;
-  }
+  const { t } = useTranslation();
 
   return (
     <div className="income-list">
-      {sortedEntries.map(entry => (
-        <div key={entry.id} className="income-item">
-          <div className="item-left">
-            {entry.category_color && (
-              <div className="category-dot" style={{ backgroundColor: entry.category_color }} />
-            )}
-            <div className="item-details">
-              <p className="item-category">{entry.category_name || 'Uncategorized'}</p>
-              <p className="item-description">{entry.description || 'No description'}</p>
-              <p className="item-date">{new Date(entry.entry_date).toLocaleDateString()}</p>
+      {incomeEntries.length === 0 ? (
+        <p style={{ textAlign: 'center', color: '#999' }}>{t('chart.noData')}</p>
+      ) : (
+        incomeEntries.map(entry => (
+          <div key={entry.id} className="income-entry">
+            <div className="entry-content">
+              <p className="entry-date">{entry.entry_date}</p>
+              <p className="entry-category">{entry.category_name || 'Uncategorized'}</p>
+              <p className="entry-description">{entry.description || '-'}</p>
             </div>
+            <div className="entry-amount">€{parseFloat(entry.amount).toFixed(2)}</div>
+            <button onClick={() => onDelete(entry.id)} className="delete-btn">×</button>
           </div>
-          <div className="item-right">
-            <p className="item-amount">€{parseFloat(entry.amount).toFixed(2)}</p>
-            <button className="delete-btn" onClick={() => { if (confirm('Delete?')) onDelete(entry.id); }}>×</button>
-          </div>
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
 }
+
 export default IncomeList;

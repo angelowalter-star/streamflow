@@ -1,0 +1,60 @@
+.charts-container {
+  display: grid;
+  gap: 30px;
+}
+
+.chart-section {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chart-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.period-toggle {
+  display: flex;
+  gap: 10px;
+}
+
+.period-toggle button {
+  padding: 8px 16px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.period-toggle button.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.period-toggle button:hover:not(.active) {
+  background: #e8e8e8;
+}
+
+.empty-chart {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #667eea;
+}

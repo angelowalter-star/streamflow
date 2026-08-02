@@ -1,0 +1,69 @@
+.forecast-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+  margin-bottom: 40px;
+}
+
+.forecast-header {
+  margin-bottom: 20px;
+}
+
+.forecast-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.forecast-subtext {
+  margin: 5px 0 0 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.forecast-main {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.forecast-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.forecast-label {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.forecast-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.detail-label {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+
+.detail-value {
+  font-size: 1.2rem;
+  font-weight: 600;
+}

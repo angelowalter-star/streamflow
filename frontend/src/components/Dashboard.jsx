@@ -1,13 +1,22 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import IncomeChart from './IncomeChart';
 import IncomeForm from './IncomeForm';
 import IncomeList from './IncomeList';
 import CategoryManager from './CategoryManager';
+import ForecastCard from './ForecastCard';
+import ExportButton from './ExportButton';
+import CSVExportButton from './CSVExportButton';
+import Settings from './Settings';
+import { DarkModeContext } from '../DarkModeContext';
 import './Dashboard.css';
 
 function Dashboard({ incomeEntries, categories, onAddIncome, onDeleteIncome, onAddCategory, onLogout, user }) {
+  const { t, i18n } = useTranslation();
   const [showForm, setShowForm] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const { isDark, setIsDark } = useContext(DarkModeContext);
 
   const stats = useMemo(() => {
     const now = new Date();
@@ -34,37 +43,67 @@ function Dashboard({ incomeEntries, categories, onAddIncome, onDeleteIncome, onA
     return grouped;
   }, [incomeEntries]);
 
-  return (
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'de' ? 'en' : 'de';
+    i18n.changeLanguage(newLang);
+    localStorage.setItem('language', newLang);
+  };
+
+  return showSettings ? (
+    <Settings onLogout={onLogout} userEmail={user?.email} />
+  ) : (
     <div className="dashboard">
       <header className="dashboard-header">
         <div>
-          <h1>StreamFlow</h1>
+          <h1>{t('app.title')}</h1>
           <p className="user-email">{user?.email}</p>
         </div>
-        <button onClick={onLogout} className="logout-btn">Logout</button>
+        <div className="header-buttons">
+          <button 
+            onClick={toggleLanguage} 
+            className="language-btn"
+            title={i18n.language === 'de' ? 'Switch to English' : 'Zu Deutsch wechseln'}
+          >
+            {i18n.language === 'de' ? '🇬🇧' : '🇩🇪'}
+          </button>
+          <button 
+            onClick={() => setIsDark(!isDark)} 
+            className="darkmode-btn"
+            title={isDark ? 'Light Mode' : 'Dark Mode'}
+          >
+            {isDark ? '☀️' : '🌙'}
+          </button>
+          <button onClick={() => setShowSettings(true)} className="settings-btn">⚙️ Settings</button>
+          <button onClick={onLogout} className="logout-btn">{t('dashboard.logout')}</button>
+        </div>
       </header>
       <div className="dashboard-content">
         <div className="stat-card">
-          <p className="stat-label">Total Income (This Month)</p>
+          <p className="stat-label">{t('dashboard.totalIncome')}</p>
           <h2 className="stat-value">€{stats.total}</h2>
-          <p className="stat-subtext">{stats.count} entries</p>
+          <p className="stat-subtext">{stats.count} {t('dashboard.entries')}</p>
         </div>
-        <div className="chart-section">
-          <h2>Income by Source</h2>
-          <IncomeChart incomeByCategory={incomeByCategory} />
+        
+        <ForecastCard />
+        <IncomeChart incomeByCategory={incomeByCategory} />
+        
+        <div className="export-buttons">
+          <ExportButton />
+          <CSVExportButton />
         </div>
+        
         <div className="action-buttons">
           <button onClick={() => setShowForm(!showForm)} className="btn btn-primary">
-            {showForm ? 'Cancel' : '+ Add Income'}
+            {showForm ? 'Cancel' : t('dashboard.addIncome')}
           </button>
           <button onClick={() => setShowCategories(!showCategories)} className="btn btn-secondary">
-            {showCategories ? 'Done' : 'Manage Categories'}
+            {showCategories ? 'Done' : t('dashboard.manageCategories')}
           </button>
         </div>
         {showForm && <IncomeForm categories={categories} onSubmit={(data) => { onAddIncome(data); setShowForm(false); }} />}
         {showCategories && <CategoryManager categories={categories} onAddCategory={onAddCategory} />}
         <div className="income-list-section">
-          <h2>Recent Income</h2>
+          <h2>{t('dashboard.recentIncome')}</h2>
           <IncomeList incomeEntries={incomeEntries} categories={categories} onDelete={onDeleteIncome} />
         </div>
       </div>

@@ -1,0 +1,93 @@
+{
+  "app": {
+    "title": "StreamFlow",
+    "subtitle": "Track all your income streams"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "signUp": "Sign Up",
+    "login": "Login",
+    "toggleAuth": "Already have an account?",
+    "error": "Error"
+  },
+  "dashboard": {
+    "totalIncome": "Total Income (This Month)",
+    "entries": "entries",
+    "logout": "Logout",
+    "addIncome": "+ Add Income",
+    "cancel": "Cancel",
+    "manageCategories": "Manage Categories",
+    "done": "Done",
+    "recentIncome": "Recent Income"
+  },
+  "forecast": {
+    "title": "Next Month Forecast",
+    "subtitle": "Based on last 30 days",
+    "projectedIncome": "Projected Income",
+    "dailyAvg": "Daily Avg",
+    "last30Days": "Last 30 Days",
+    "daysWithIncome": "Days with Income"
+  },
+  "trends": {
+    "title": "Income Trends",
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "income": "Income"
+  },
+  "chart": {
+    "incomeBySource": "Income by Source",
+    "noData": "No data yet"
+  },
+  "form": {
+    "amount": "Amount (€)",
+    "date": "Date",
+    "category": "Category",
+    "description": "Description (optional)",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "recurring": "🔄 Recurring (Contract, Retainer, etc.)",
+    "frequency": "Frequency",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "quarterly": "Quarterly",
+    "yearly": "Yearly",
+    "addIncome": "Add Income",
+    "select": "Select",
+    "submit": "Add",
+    "create": "Create",
+    "adding": "Adding...",
+    "setEndDate": "Please set an end date"
+  },
+  "list": {
+    "delete": "Delete"
+  },
+  "categories": {
+    "manage": "Manage Categories",
+    "newCategory": "New Category",
+    "categoryName": "Category Name",
+    "color": "Color",
+    "add": "Add"
+  },
+  "settings": {
+    "title": "Account Settings",
+    "email": "Email",
+    "password": "Password",
+    "deleteAccount": "Delete Account",
+    "changeEmail": "Change Email",
+    "newEmail": "New Email",
+    "currentPassword": "Current Password",
+    "updateEmail": "Update Email",
+    "changePassword": "Change Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "update": "Update",
+    "warning": "⚠️ This action cannot be undone.",
+    "confirmDeletion": "I understand that my account and all data will be deleted"
+  },
+  "export": {
+    "pdf": "📥 Download Report",
+    "csv": "📥 Export CSV"
+  }
+}

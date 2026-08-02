@@ -1,0 +1,93 @@
+{
+  "app": {
+    "title": "StreamFlow",
+    "subtitle": "Alle deine Einnahmequellen tracken"
+  },
+  "auth": {
+    "email": "E-Mail",
+    "password": "Passwort",
+    "signUp": "Registrieren",
+    "login": "Anmelden",
+    "toggleAuth": "Bereits ein Konto?",
+    "error": "Fehler"
+  },
+  "dashboard": {
+    "totalIncome": "Gesamteinkommen (diesen Monat)",
+    "entries": "Einträge",
+    "logout": "Abmelden",
+    "addIncome": "+ Einkommen hinzufügen",
+    "cancel": "Abbrechen",
+    "manageCategories": "Kategorien verwalten",
+    "done": "Fertig",
+    "recentIncome": "Letzte Einträge"
+  },
+  "forecast": {
+    "title": "Nächster Monat Forecast",
+    "subtitle": "Basierend auf den letzten 30 Tagen",
+    "projectedIncome": "Geplantes Einkommen",
+    "dailyAvg": "Täglicher Durchschnitt",
+    "last30Days": "Letzte 30 Tage",
+    "daysWithIncome": "Tage mit Einkommen"
+  },
+  "trends": {
+    "title": "Einnahmen Trends",
+    "daily": "Täglich",
+    "weekly": "Wöchentlich",
+    "monthly": "Monatlich",
+    "income": "Einkommen"
+  },
+  "chart": {
+    "incomeBySource": "Einkommen nach Quelle",
+    "noData": "Noch keine Daten"
+  },
+  "form": {
+    "amount": "Betrag (€)",
+    "date": "Datum",
+    "category": "Kategorie",
+    "description": "Beschreibung (optional)",
+    "startDate": "Startdatum",
+    "endDate": "Enddatum",
+    "recurring": "🔄 Wiederkehrend (Vertrag, Retainer, etc.)",
+    "frequency": "Häufigkeit",
+    "weekly": "Wöchentlich",
+    "monthly": "Monatlich",
+    "quarterly": "Quartalsweise",
+    "yearly": "Jährlich",
+    "addIncome": "Einkommen hinzufügen",
+    "select": "Auswählen",
+    "submit": "Hinzufügen",
+    "create": "Erstellen",
+    "adding": "Wird hinzugefügt...",
+    "setEndDate": "Bitte Enddatum setzen"
+  },
+  "list": {
+    "delete": "Löschen"
+  },
+  "categories": {
+    "manage": "Kategorien verwalten",
+    "newCategory": "Neue Kategorie",
+    "categoryName": "Kategoriename",
+    "color": "Farbe",
+    "add": "Hinzufügen"
+  },
+  "settings": {
+    "title": "Kontoeinstellungen",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "deleteAccount": "Konto löschen",
+    "changeEmail": "E-Mail ändern",
+    "newEmail": "Neue E-Mail",
+    "currentPassword": "Aktuelles Passwort",
+    "updateEmail": "E-Mail aktualisieren",
+    "changePassword": "Passwort ändern",
+    "newPassword": "Neues Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "update": "Aktualisieren",
+    "warning": "⚠️ Diese Aktion kann nicht rückgängig gemacht werden.",
+    "confirmDeletion": "Ich verstehe, dass mein Konto und alle Daten gelöscht werden"
+  },
+  "export": {
+    "pdf": "📥 Bericht downloaden",
+    "csv": "📥 CSV exportieren"
+  }
+}

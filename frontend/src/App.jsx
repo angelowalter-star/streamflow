@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n';
 import Dashboard from './components/Dashboard';
 import Auth from './components/Auth';
+import { DarkModeProvider } from './DarkModeContext';
 import './App.css';
 
 const API_URL = 'http://localhost:5001/api';
@@ -78,21 +81,27 @@ function App() {
   };
 
   if (!token) {
-    return <Auth onLogin={handleLogin} />;
+    return (
+      <I18nextProvider i18n={i18n}>
+        <Auth onLogin={handleLogin} />
+      </I18nextProvider>
+    );
   }
 
   return (
-    <div className="app">
-      <Dashboard
-        incomeEntries={incomeEntries}
-        categories={categories}
-        onAddIncome={handleAddIncome}
-        onDeleteIncome={handleDeleteIncome}
-        onAddCategory={handleAddCategory}
-        onLogout={handleLogout}
-        user={user}
-      />
-    </div>
+    <I18nextProvider i18n={i18n}>
+      <DarkModeProvider>
+        <Dashboard
+          incomeEntries={incomeEntries}
+          categories={categories}
+          onAddIncome={handleAddIncome}
+          onDeleteIncome={handleDeleteIncome}
+          onAddCategory={handleAddCategory}
+          onLogout={handleLogout}
+          user={user}
+        />
+      </DarkModeProvider>
+    </I18nextProvider>
   );
 }
 
