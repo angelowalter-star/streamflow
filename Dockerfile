@@ -1,17 +1,13 @@
 FROM node:20-alpine
 
-WORKDIR /app
-
-# Copy backend
-COPY backend/ /app/backend/
-
 WORKDIR /app/backend
 
-# Install dependencies
+COPY backend/package*.json ./
+
 RUN npm install
 
-# Expose port
+COPY backend/ .
+
 EXPOSE 5001
 
-# Start server
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
