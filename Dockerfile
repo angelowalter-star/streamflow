@@ -9,4 +9,4 @@ COPY backend/. .
 
 EXPOSE 5001
 
-CMD ["node", "server.js"]
+CMD ["node", "/app/backend/server.js"]
