@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './RecurringIncomeForm.css';
 
-const API_URL = 'http://localhost:5001/api';
+const API_URL = import.meta.env.VITE_API_URL;
 
 function RecurringIncomeForm({ categories, onSubmit }) {
   const [isRecurring, setIsRecurring] = useState(false);
