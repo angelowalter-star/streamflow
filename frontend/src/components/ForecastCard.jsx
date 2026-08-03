@@ -16,7 +16,7 @@ function ForecastCard() {
 
   const fetchForecast = async () => {
     try {
-      const response = await axios.get(`${API_URL}/income/forecast`);
+      const response = await axios.get(`${API_URL}/income/forecast`, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } });
       setForecast(response.data);
     } catch (error) {
       console.error('Error fetching forecast:', error);

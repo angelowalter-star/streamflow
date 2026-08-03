@@ -19,7 +19,7 @@ function IncomeChart({ incomeByCategory }) {
   const fetchTrends = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${API_URL}/income/trends?period=${period}`);
+      const response = await axios.get(`${API_URL}/income/trends?period=${period}`, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } });
       setTrendData(response.data);
     } catch (error) {
       console.error('Error fetching trends:', error);
