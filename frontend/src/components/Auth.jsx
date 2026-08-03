@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Auth.css';
 
-const API_URL = 'http://localhost:5001/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
 
 function Auth({ onLogin }) {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -13,43 +13,45 @@ function Auth({ onLogin }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
+    setError('');
 
     try {
-      const endpoint = isLogin ? '/auth/login' : '/auth/register';
-      const response = await axios.post(`${API_URL}${endpoint}`, { email, password });
+      const endpoint = isSignUp ? '/api/auth/register' : '/api/auth/login';
+      const response = await axios.post(`${API_URL}${endpoint}`, {
+        email,
+        password
+      });
+
+      localStorage.setItem('token', response.data.token);
       onLogin(response.data);
     } catch (err) {
       setError(err.response?.data?.error || 'Error');
-    } finally {
-      setLoading(false);
     }
+    setLoading(false);
   };
 
   return (
     <div className="auth-container">
-      <div className="auth-box">
-        <h1>StreamFlow</h1>
-        <p className="subtitle">Track all your income streams</p>
+      <div className="auth-card">
+        <h1 className="auth-title">StreamFlow</h1>
+        <p className="auth-subtitle">Income Tracker für Freelancer</p>
+
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Email</label>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          </div>
-          <div className="form-group">
-            <label>Password</label>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-          </div>
-          {error && <p className="error-message">{error}</p>}
-          <button type="submit" disabled={loading} className="submit-btn">
-            {loading ? 'Loading...' : isLogin ? 'Login' : 'Sign Up'}
+          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input type="password" placeholder="Passwort" value={password} onChange={(e) => setPassword(e.target.value)} required />
+
+          {error && <div className="error-message">{error}</div>}
+
+          <button type="submit" disabled={loading} className="auth-button">
+            {loading ? 'Loading...' : isSignUp ? 'Registrieren' : 'Anmelden'}
           </button>
         </form>
-        <p className="toggle-auth">
-          {isLogin ? "Don't have an account? " : 'Already have an account? '}
-          <button type="button" onClick={() => { setIsLogin(!isLogin); setError(''); }} className="toggle-btn">
-            {isLogin ? 'Sign Up' : 'Login'}
+
+        <p className="auth-toggle">
+          {isSignUp ? 'Bereits Konto?' : 'Noch kein Konto?'}
+          <button type="button" onClick={() => setIsSignUp(!isSignUp)} className="toggle-button">
+            {isSignUp ? 'Anmelden' : 'Registrieren'}
           </button>
         </p>
       </div>
