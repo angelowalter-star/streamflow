@@ -101,3 +101,19 @@ body.dark-mode .chart-section {
   border: 1px solid #333;
 }
 
+
+html {
+  background: #f5f7fa;
+}
+
+.dark html {
+  background: #1a1a1a;
+}
+
+html {
+  background: #f5f7fa;
+}
+
+.dark html {
+  background: #1a1a1a;
+}

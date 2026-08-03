@@ -5,7 +5,7 @@
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
-.auth-box {
+.auth-card {
   background: white;
   padding: 40px;
   border-radius: 10px;
@@ -13,56 +13,62 @@
   width: 100%;
   max-width: 400px;
 }
-.auth-box h1 {
+.auth-title {
   font-size: 2rem;
   margin-bottom: 10px;
   color: #667eea;
   text-align: center;
 }
-.subtitle {
+.auth-subtitle {
   text-align: center;
   color: #666;
   margin-bottom: 30px;
 }
-.form-group {
-  margin-bottom: 20px;
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-.form-group input {
+.auth-card input {
   width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  font-size: 1rem;
 }
-.submit-btn {
+.auth-button {
   width: 100%;
   padding: 12px;
   background: #667eea;
   color: white;
+  border: none;
   border-radius: 5px;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 20px;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+.auth-button:hover {
+  background: #5568d3;
 }
 .error-message {
   color: #ef4444;
   font-size: 0.9rem;
-  margin-bottom: 15px;
   padding: 10px;
   background: #fee;
   border-radius: 5px;
 }
-.toggle-auth {
+.auth-toggle {
   text-align: center;
   margin-top: 20px;
+  color: #333;
 }
-.toggle-btn {
+.toggle-button {
   background: none;
+  border: none;
   color: #667eea;
   font-weight: 600;
   cursor: pointer;
+  padding: 0;
+  margin-left: 5px;
 }
