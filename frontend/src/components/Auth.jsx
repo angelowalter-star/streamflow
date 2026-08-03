@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './Auth.css';
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
 
 function Auth({ onLogin }) {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -11,22 +8,28 @@ function Auth({ onLogin }) {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
     try {
-      const endpoint = isSignUp ? '/api/auth/register' : '/api/auth/login';
-      const response = await axios.post(`${API_URL}${endpoint}`, {
-        email,
-        password
+      const endpoint = isSignUp ? '/auth/register' : '/auth/login';
+      const response = await fetch(`${API_URL}${endpoint}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
       });
 
-      localStorage.setItem('token', response.data.token);
-      onLogin(response.data);
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error);
+
+      localStorage.setItem('token', data.token);
+      onLogin(data);
     } catch (err) {
-      setError(err.response?.data?.error || 'Error');
+      setError(err.message || 'Error');
     }
     setLoading(false);
   };
